@@ -4,7 +4,7 @@ using System;
 namespace BikeDistributor.Test
 {
     [TestFixture]
-    public class OrderTest
+    public class OrderWithOneBikeTest
     {
         private readonly static Bike Defy = new Bike("Giant", "Defy 1", Bike.OneThousand);
         private readonly static Bike Elite = new Bike("Specialized", "Venge Elite", Bike.TwoThousand);
