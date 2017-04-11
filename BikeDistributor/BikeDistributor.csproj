@@ -46,14 +46,15 @@
     <Compile Include="Receipt\ReceiptViewOptions.cs" />
     <Compile Include="Receipt\ReceiptFormats.cs" />
     <Compile Include="Receipt\ReceiptView.cs" />
-    <Compile Include="LineAmountCalculator.cs" />
     <Compile Include="Discount\DiscountCondition.cs" />
     <Compile Include="Discount\DiscountList.cs" />
-    <Compile Include="TaxCalculator.cs" />
+    <Compile Include="Calculators\TaxCalculator.cs" />
+    <Compile Include="Calculators\LineAmount.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Receipt\" />
     <Folder Include="Discount\" />
+    <Folder Include="Calculators\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

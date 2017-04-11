@@ -11,8 +11,8 @@
             Bike = bike;
             Quantity = quantity;
 
-            var calculator = new LineAmountCalculator(this);
-            Amount = calculator.CalculateAmount();
+            var calculator = new LineAmount(this);
+            Amount = calculator.Calculate();
         }
     }
 }

@@ -1,15 +1,15 @@
 ﻿namespace BikeDistributor
 {
-    public class LineAmountCalculator
+    public class LineAmount
     {
         private readonly Line line;
 
-        public LineAmountCalculator(Line line)
+        public LineAmount(Line line)
         {
             this.line = line;
         }
 
-        public double CalculateAmount()
+        public double Calculate()
         {
             var amount = 0d;
             var discount = DiscountList.DiscountFor[line.Bike.Price];
