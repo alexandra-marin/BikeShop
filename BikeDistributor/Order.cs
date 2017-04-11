@@ -7,7 +7,7 @@ namespace BikeDistributor
 {
     public class Order
     {
-		public const string NewLine = "\r\n";
+		public static string NewLine = Environment.NewLine;
         private const double TaxRate = .0725d;
 		private readonly IList<Line> _lines = new List<Line>();
 
