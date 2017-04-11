@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace BikeDistributor
 {
@@ -12,21 +11,20 @@ namespace BikeDistributor
         public string Receipt(string Company, IList<Line> lines)
         {
             ReceiptView view = new ReceiptView.Builder()
-                                    .WithCompany(Company)
-                                    .WithHeader("Order Receipt for {0}" + Environment.NewLine)
-                                    .WithLines(lines)
-                                    .WithLine("\t{0} x {1} {2} = {3}" + Environment.NewLine)
-                                    .WithSubtotal("Sub-Total: {0}" + Environment.NewLine)
-                                    .WithTax("Tax: {0}" + Environment.NewLine)
-                                    .WithTotal("Total: {0}")
-                                    .Build();
+                                .WithCompany(Company)
+                                .WithHeader("Order Receipt for {0}" + Environment.NewLine)
+                                .WithLines(lines)
+                                .WithLine("\t{0} x {1} {2} = {3}" + Environment.NewLine)
+                                .WithSubtotal("Sub-Total: {0}" + Environment.NewLine)
+                                .WithTax("Tax: {0}" + Environment.NewLine)
+                                .WithTotal("Total: {0}")
+                                .Build();
 
             return view.ToString();
         }
 
         public string HtmlReceipt(string Company, IList<Line> lines)
         {
-
             var header = "<html><body><h1>Order Receipt for {0}</h1>";
             var subTotal = "<h3>Sub-Total: {0}</h3>";
 
