@@ -116,18 +116,18 @@ namespace BikeDistributor
 
         private void AddSubtotal()
         {
-            result.AppendLine(string.Format("Sub-Total: {0}", totalAmount.ToString("C")));
+            result.Append(string.Format(subtotalTemplate, totalAmount.ToString("C")));
         }
 
         private void AddTax()
         {
             tax = totalAmount * TaxRate;
-            result.AppendLine(string.Format("Tax: {0}", tax.ToString("C")));
+            result.Append(string.Format(taxTemplate, tax.ToString("C")));
         }
 
         private void AddTotal()
         {
-            result.Append(string.Format("Total: {0}", (totalAmount + tax).ToString("C")));
+            result.Append(string.Format(totalTemplate, (totalAmount + tax).ToString("C")));
         }
 
         private double CalculateAmount(Line line)

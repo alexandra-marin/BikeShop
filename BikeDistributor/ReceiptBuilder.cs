@@ -11,47 +11,42 @@ namespace BikeDistributor
 
         public string Receipt(string Company, IList<Line> lines)
         {
-            ReceiptView view = new ReceiptView
-									.Builder()
-									.WithCompany(Company)
-									.WithLines(lines)
-									.WithHeader("Order Receipt for {0}" + Environment.NewLine)
-									.WithLine("\t{0} x {1} {2} = {3}" + Environment.NewLine)
-									.WithSubtotal("Sub-Total: {0}" + Environment.NewLine)
-									.WithTax("Tax: {0}" + Environment.NewLine)
-									.WithTotal("Total: {0}")
-			                        .Build();
+            ReceiptView view = new ReceiptView.Builder()
+                                    .WithCompany(Company)
+                                    .WithHeader("Order Receipt for {0}" + Environment.NewLine)
+                                    .WithLines(lines)
+                                    .WithLine("\t{0} x {1} {2} = {3}" + Environment.NewLine)
+                                    .WithSubtotal("Sub-Total: {0}" + Environment.NewLine)
+                                    .WithTax("Tax: {0}" + Environment.NewLine)
+                                    .WithTotal("Total: {0}")
+                                    .Build();
 
             return view.ToString();
         }
 
-        public string HtmlReceipt(string Company, IList<Line> _lines)
+        public string HtmlReceipt(string Company, IList<Line> lines)
         {
-            var totalAmount = 0d;
-            var result = new StringBuilder(string.Format("<html><body><h1>Order Receipt for {0}</h1>", Company));
-            if (_lines.Any())
+
+            var header = "<html><body><h1>Order Receipt for {0}</h1>";
+            var subTotal = "<h3>Sub-Total: {0}</h3>";
+
+            if (lines.Any())
             {
-                result.Append("<ul>");
+                header += "<ul>";
+                subTotal = "</ul>" + subTotal;
             }
 
-            foreach (var line in _lines)
-            {
-                double thisAmount = CalculateAmount(line);
-                result.Append(string.Format("<li>{0} x {1} {2} = {3}</li>", line.Quantity, line.Bike.Brand, line.Bike.Model, thisAmount.ToString("C")));
-                totalAmount += thisAmount;
-            }
+            ReceiptView view = new ReceiptView.Builder()
+                                .WithCompany(Company)
+                                .WithHeader(header)
+                                .WithLines(lines)
+                                .WithLine("<li>{0} x {1} {2} = {3}</li>")
+                                .WithSubtotal(subTotal)
+                                .WithTax("<h3>Tax: {0}</h3>")
+                                .WithTotal("<h2>Total: {0}</h2></body></html>")
+                                .Build();
 
-
-            if (_lines.Any())
-            {
-                result.Append("</ul>");
-            }
-            result.Append(string.Format("<h3>Sub-Total: {0}</h3>", totalAmount.ToString("C")));
-            var tax = totalAmount * TaxRate;
-            result.Append(string.Format("<h3>Tax: {0}</h3>", tax.ToString("C")));
-            result.Append(string.Format("<h2>Total: {0}</h2>", (totalAmount + tax).ToString("C")));
-            result.Append("</body></html>");
-            return result.ToString();
+            return view.ToString();
         }
 
         private double CalculateAmount(Line line)
