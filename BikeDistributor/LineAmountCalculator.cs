@@ -29,7 +29,7 @@ namespace BikeDistributor
                     break;
             }
 
-            if (line.Quantity >= discount.MaxQuantity)
+            if (line.Quantity >= discount.MinEligibleQuantity)
                 thisAmount += line.Quantity * line.Bike.Price * discount.DiscountedBy;
             else
                 thisAmount += line.Quantity * line.Bike.Price;

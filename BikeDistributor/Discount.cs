@@ -4,12 +4,12 @@ namespace BikeDistributor
 {
     public class DiscountCondition
     {
-        public readonly int    MaxQuantity;
+        public readonly int    MinEligibleQuantity;
         public readonly double DiscountedBy;
 
-        public DiscountCondition(int maxQuantity, double discount)
+        public DiscountCondition(int minQuantity, double discount)
         {
-            this.MaxQuantity = maxQuantity;
+            this.MinEligibleQuantity = minQuantity;
             this.DiscountedBy = discount;
         }
     }
