@@ -33,6 +33,7 @@
   <ItemGroup>
     <Compile Include="OrderWithOneBikeTest.cs" />
     <Compile Include="OrderWithManyBikesTest.cs" />
+    <Compile Include="OrderWithManyLinesTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
