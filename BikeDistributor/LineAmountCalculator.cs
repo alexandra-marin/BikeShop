@@ -14,29 +14,23 @@ namespace BikeDistributor
 		public double CalculateAmount()
 		{
 			var thisAmount = 0d;
-            var maxQuantity = 0;
-            var discount = 1d;
+            var discount = new DiscountCondition(0, 1d);
 
             switch (line.Bike.Price)
             {
                 case Bike.OneThousand:
-                    maxQuantity = 20;
-                    discount = .9d;
+                    discount = new DiscountCondition(20, .9d);
                     break;
                 case Bike.TwoThousand:
-                    maxQuantity = 10;
-                    discount = .8d;
+                    discount = new DiscountCondition(10, .8d);
                     break;
                 case Bike.FiveThousand:
-                    maxQuantity = 5;
-                    discount = .8d;
-                    break;
-                default:
+                    discount = new DiscountCondition(5, .8d);
                     break;
             }
 
-            if (line.Quantity >= maxQuantity)
-                thisAmount += line.Quantity * line.Bike.Price * discount;
+            if (line.Quantity >= discount.MaxQuantity)
+                thisAmount += line.Quantity * line.Bike.Price * discount.DiscountedBy;
             else
                 thisAmount += line.Quantity * line.Bike.Price;
             
