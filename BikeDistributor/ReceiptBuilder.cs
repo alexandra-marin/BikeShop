@@ -9,13 +9,18 @@ namespace BikeDistributor
     {
         private const double TaxRate = .0725d;
 
-        public string Receipt(string Company, IList<Line> _lines)
+        public string Receipt(string Company, IList<Line> lines)
         {
-            ReceiptView view = new ReceiptView(Company, _lines, "Order Receipt for {0}" + Environment.NewLine,
-                                              "\t{0} x {1} {2} = {3}" + Environment.NewLine, 
-                                               "Sub-Total: {0}" + Environment.NewLine, 
-                                               "Tax: {0}" + Environment.NewLine, 
-                                               "Total: {0}");
+            ReceiptView view = new ReceiptView
+									.Builder()
+									.WithCompany(Company)
+									.WithLines(lines)
+									.WithHeader("Order Receipt for {0}" + Environment.NewLine)
+									.WithLine("\t{0} x {1} {2} = {3}" + Environment.NewLine)
+									.WithSubtotal("Sub-Total: {0}" + Environment.NewLine)
+									.WithTax("Tax: {0}" + Environment.NewLine)
+									.WithTotal("Total: {0}")
+			                        .Build();
 
             return view.ToString();
         }
@@ -27,12 +32,18 @@ namespace BikeDistributor
             if (_lines.Any())
             {
                 result.Append("<ul>");
-                foreach (var line in _lines)
-                {
-                    double thisAmount = CalculateAmount(line);
-                    result.Append(string.Format("<li>{0} x {1} {2} = {3}</li>", line.Quantity, line.Bike.Brand, line.Bike.Model, thisAmount.ToString("C")));
-                    totalAmount += thisAmount;
-                }
+            }
+
+            foreach (var line in _lines)
+            {
+                double thisAmount = CalculateAmount(line);
+                result.Append(string.Format("<li>{0} x {1} {2} = {3}</li>", line.Quantity, line.Bike.Brand, line.Bike.Model, thisAmount.ToString("C")));
+                totalAmount += thisAmount;
+            }
+
+
+            if (_lines.Any())
+            {
                 result.Append("</ul>");
             }
             result.Append(string.Format("<h3>Sub-Total: {0}</h3>", totalAmount.ToString("C")));
