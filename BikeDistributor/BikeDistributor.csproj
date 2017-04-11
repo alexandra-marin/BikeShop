@@ -49,6 +49,7 @@
     <Compile Include="LineAmountCalculator.cs" />
     <Compile Include="Discount\DiscountCondition.cs" />
     <Compile Include="Discount\DiscountList.cs" />
+    <Compile Include="TaxCalculator.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Receipt\" />
