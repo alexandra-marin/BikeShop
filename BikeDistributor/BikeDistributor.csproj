@@ -46,6 +46,7 @@
     <Compile Include="Receipt\ReceiptViewBuilder.cs" />
     <Compile Include="Receipt\ReceiptFormats.cs" />
     <Compile Include="Receipt\ReceiptView.cs" />
+    <Compile Include="LineAmountCalculator.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Receipt\" />
