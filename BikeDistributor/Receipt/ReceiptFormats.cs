@@ -8,7 +8,7 @@ namespace BikeDistributor
 	{
 		public string PlainText(string company, IList<Line> lines)
 		{
-			ReceiptView view = new ReceiptView.ReceiptViewBuilder()
+			ReceiptView view = new ReceiptView.Options()
                                               .WithCompany(company)
                                               .WithHeader("Order Receipt for {0}" + Environment.NewLine)
                                               .WithLines(lines)
@@ -32,7 +32,7 @@ namespace BikeDistributor
 				subTotal = "</ul>" + subTotal;
 			}
 
-			ReceiptView view = new ReceiptView.ReceiptViewBuilder()
+			ReceiptView view = new ReceiptView.Options()
                                               .WithCompany(company)
                                               .WithHeader(header)
                                               .WithLines(lines)

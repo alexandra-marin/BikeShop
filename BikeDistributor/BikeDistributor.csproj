@@ -43,7 +43,7 @@
     <Compile Include="Bike.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Line.cs" />
-    <Compile Include="Receipt\ReceiptViewBuilder.cs" />
+    <Compile Include="Receipt\ReceiptViewOptions.cs" />
     <Compile Include="Receipt\ReceiptFormats.cs" />
     <Compile Include="Receipt\ReceiptView.cs" />
     <Compile Include="LineAmountCalculator.cs" />

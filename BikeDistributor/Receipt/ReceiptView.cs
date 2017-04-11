@@ -1,40 +1,37 @@
-﻿using System.Collections.Generic;
-using System.Text;
+﻿using System.Text;
 
 namespace BikeDistributor
 {
 	public sealed partial class ReceiptView
 	{
-        private const double TaxRate = .0725d;
+        private const    double        TaxRate = .0725d;
+        private          double        tax;
+        private          double        totalAmount;
+        private readonly Options       options;
+        private          StringBuilder result = new StringBuilder();
 
-        private double totalAmount = 0d;
-        private double tax;
-
-		private StringBuilder result = new StringBuilder();
-		private readonly string company;
-		private readonly IList<Line> lines;
-		private readonly string headerTemplate;
-		private readonly string lineTemplate;
-		private readonly string subtotalTemplate;
-		private readonly string taxTemplate;
-		private readonly string totalTemplate;
-
-		private ReceiptView(ReceiptViewBuilder builder)
+		private ReceiptView(Options builder)
 		{
-			this.totalTemplate = builder.totalTemplate;
-			this.taxTemplate = builder.taxTemplate;
-			this.subtotalTemplate = builder.subtotalTemplate;
-			this.lineTemplate = builder.lineTemplate;
-			this.headerTemplate = builder.headerTemplate;
-			this.lines = builder.lines;
-			this.company = builder.company;
-
-			CalculateResult();
+			this.options = builder;
+			
+            CalculateResult();
 		}
+ 
+        public void CalculateResult()
+        {
+            AddHeader();
+            foreach (var line in options.Lines)
+            {
+                AddLine(line);
+            }
+            AddSubtotal();
+            AddTax();
+            AddTotal();
+        }
 
 		public void AddHeader()
 		{
-			result.Append(string.Format(headerTemplate, company));
+			result.Append(string.Format(options.HeaderTemplate, options.Company));
 		}
 
 		public void AddLine(Line line)
@@ -42,44 +39,30 @@ namespace BikeDistributor
             var amount = new LineAmountCalculator(line).CalculateAmount();
 			totalAmount += amount;
 
-			result.Append(string.Format(lineTemplate,
+			result.Append(string.Format(options.LineTemplate,
 						    line.Quantity,
 						    line.Bike.Brand,
 						    line.Bike.Model,
 						    amount.ToString("C")));
 		}
 
-		public void AddFooter()
-		{
-			AddSubtotal();
-			AddTax();
-			AddTotal();
-		}
-
 		private void AddSubtotal()
 		{
-			result.Append(string.Format(subtotalTemplate, totalAmount.ToString("C")));
+			result.Append(string.Format(options.SubtotalTemplate, 
+                                        totalAmount.ToString("C")));
 		}
 
 		private void AddTax()
 		{
 			tax = totalAmount * TaxRate;
-			result.Append(string.Format(taxTemplate, tax.ToString("C")));
+			result.Append(string.Format(options.TaxTemplate, 
+                                        tax.ToString("C")));
 		}
 
 		private void AddTotal()
 		{
-			result.Append(string.Format(totalTemplate, (totalAmount + tax).ToString("C")));
-		}
-
-		public void CalculateResult()
-		{
-			AddHeader();
-			foreach (var line in lines)
-			{
-				AddLine(line);
-			}
-			AddFooter();
+			result.Append(string.Format(options.TotalTemplate, 
+                                        (totalAmount + tax).ToString("C")));
 		}
 
 		public override string ToString()
