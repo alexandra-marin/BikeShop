@@ -7,7 +7,6 @@ namespace BikeDistributor
 {
     public class Order
     {
-		public static string NewLine = Environment.NewLine;
         private const double TaxRate = .0725d;
 		private readonly IList<Line> _lines = new List<Line>();
 
@@ -26,7 +25,7 @@ namespace BikeDistributor
         public string Receipt()
         {
             var totalAmount = 0d;
-			var result = new StringBuilder(string.Format("Order Receipt for {0}{1}", Company, NewLine));
+			var result = new StringBuilder(string.Format("Order Receipt for {0}{1}", Company, Environment.NewLine));
             foreach (var line in _lines)
 			{
 				var thisAmount = 0d;
@@ -51,20 +50,15 @@ namespace BikeDistributor
 							thisAmount += line.Quantity * line.Bike.Price;
 						break;
 				}
-				MyAppendLine(result, string.Format("\t{0} x {1} {2} = {3}", line.Quantity, line.Bike.Brand, line.Bike.Model, thisAmount.ToString("C")));
+				result.AppendLine(string.Format("\t{0} x {1} {2} = {3}", line.Quantity, line.Bike.Brand, line.Bike.Model, thisAmount.ToString("C")));
 				totalAmount += thisAmount;
 			}
-			MyAppendLine(result, string.Format("Sub-Total: {0}", totalAmount.ToString("C")));
+			result.AppendLine(string.Format("Sub-Total: {0}", totalAmount.ToString("C")));
             var tax = totalAmount * TaxRate;
-            MyAppendLine(result, string.Format("Tax: {0}", tax.ToString("C")));
+            result.AppendLine(string.Format("Tax: {0}", tax.ToString("C")));
             result.Append(string.Format("Total: {0}", (totalAmount + tax).ToString("C")));
             return result.ToString();
         }
-
-		private static void MyAppendLine(StringBuilder result, string line)
-		{
-			result.Append(line).Append(NewLine);
-		}
 
 		public string HtmlReceipt()
         {
