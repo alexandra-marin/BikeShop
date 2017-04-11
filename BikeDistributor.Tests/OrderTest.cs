@@ -17,11 +17,11 @@ namespace BikeDistributor.Test
             Assert.AreEqual(ResultStatementOneDefy, order.Receipt());
         }
 
-        private const string ResultStatementOneDefy = @"Order Receipt for Anywhere Bike Shop
-	1 x Giant Defy 1 = $1,000.00
-Sub-Total: $1,000.00
-Tax: $72.50
-Total: $1,072.50";
+        private const string ResultStatementOneDefy = "Order Receipt for Anywhere Bike Shop\r\n" +
+	"\t1 x Giant Defy 1 = $1,000.00\r\n" +
+"Sub-Total: $1,000.00\r\n" +
+"Tax: $72.50\r\n" +
+"Total: $1,072.50";
 
         [Test]
         public void ReceiptOneElite()
@@ -31,11 +31,11 @@ Total: $1,072.50";
             Assert.AreEqual(ResultStatementOneElite, order.Receipt());
         }
 
-        private const string ResultStatementOneElite = @"Order Receipt for Anywhere Bike Shop
-	1 x Specialized Venge Elite = $2,000.00
-Sub-Total: $2,000.00
-Tax: $145.00
-Total: $2,145.00";
+        private const string ResultStatementOneElite = "Order Receipt for Anywhere Bike Shop\r\n" +
+	"\t1 x Specialized Venge Elite = $2,000.00\r\n" +
+"Sub-Total: $2,000.00\r\n" +
+"Tax: $145.00\r\n" +
+"Total: $2,145.00";
 
         [Test]
         public void ReceiptOneDuraAce()
@@ -45,11 +45,11 @@ Total: $2,145.00";
             Assert.AreEqual(ResultStatementOneDuraAce, order.Receipt());
         }
 
-        private const string ResultStatementOneDuraAce = @"Order Receipt for Anywhere Bike Shop
-	1 x Specialized S-Works Venge Dura-Ace = $5,000.00
-Sub-Total: $5,000.00
-Tax: $362.50
-Total: $5,362.50";
+        private const string ResultStatementOneDuraAce = "Order Receipt for Anywhere Bike Shop\r\n" +
+	"\t1 x Specialized S-Works Venge Dura-Ace = $5,000.00\r\n" +
+"Sub-Total: $5,000.00\r\n" +
+"Tax: $362.50\r\n" +
+"Total: $5,362.50";
 
         [Test]
         public void HtmlReceiptOneDefy()
