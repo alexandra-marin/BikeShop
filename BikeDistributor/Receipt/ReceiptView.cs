@@ -1,27 +1,23 @@
 ﻿using System.Text;
+using System.Linq;
 
 namespace BikeDistributor
 {
 	public sealed partial class ReceiptView
 	{
-        private             double        totalAmount;
         private readonly    Options       options;
         private             StringBuilder result = new StringBuilder();
 
 		private ReceiptView(Options builder)
 		{
-			this.options = builder;
-			
-            CalculateResult();
+			options = builder;
+            PrintResult();
 		}
  
-        public void CalculateResult()
+        public void PrintResult()
         {
             AddHeader();
-            foreach (var line in options.Lines)
-            {
-                AddLine(line);
-            }
+            options.Lines.ToList().ForEach(x => AddLine(x));
             AddFooter();
         }
 
@@ -32,15 +28,12 @@ namespace BikeDistributor
 
 		public void AddLine(Line line)
 		{
-            var amount = new LineAmountCalculator(line).CalculateAmount();
-			totalAmount += amount;
-
-			result.Append(string.Format(options.LineTemplate, line.Quantity, line.Bike.Brand, line.Bike.Model, amount.ToString("C")));
+			result.Append(string.Format(options.LineTemplate, line.Quantity, line.Bike.Brand, line.Bike.Model, line.Amount.ToString("C")));
 		}
     
         private void AddFooter()
         {
-            var calculator = new TaxCalculator(totalAmount);
+            var calculator = new TaxCalculator(options.Lines);
 
             result.Append(string.Format(options.SubtotalTemplate, calculator.Subtotal));
             result.Append(string.Format(options.TaxTemplate     , calculator.Tax     ));

@@ -1,4 +1,7 @@
-﻿namespace BikeDistributor
+﻿using System.Collections.Generic;
+using System.Linq;
+
+namespace BikeDistributor
 {
     public class TaxCalculator
     {
@@ -7,9 +10,9 @@
         private readonly double tax;
         private readonly double total;
         
-        public TaxCalculator(double totalAmount)
+        public TaxCalculator(IList<Line> receiptRows)
         {
-            beforeTax = totalAmount;
+            beforeTax = receiptRows.Sum(line => line.Amount);
             tax       = beforeTax * taxRate;
             total     = beforeTax + tax;
         }
