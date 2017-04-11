@@ -25,42 +25,47 @@ namespace BikeDistributor
         public string Receipt()
         {
             var totalAmount = 0d;
-            var result = new StringBuilder(string.Format("Order Receipt for {0}{1}", Company, Environment.NewLine));
+            var result = new StringBuilder(string.Format("Order Receipt for {0}{1}", Company, "\r\n"));
             foreach (var line in _lines)
-            {
-                var thisAmount = 0d;
-                switch (line.Bike.Price)
-                {
-                    case Bike.OneThousand:
-                        if (line.Quantity >= 20)
-                            thisAmount += line.Quantity * line.Bike.Price * .9d;
-                        else
-                            thisAmount += line.Quantity * line.Bike.Price;
-                        break;
-                    case Bike.TwoThousand:
-                        if (line.Quantity >= 10)
-                            thisAmount += line.Quantity * line.Bike.Price * .8d;
-                        else
-                            thisAmount += line.Quantity * line.Bike.Price;
-                        break;
-                    case Bike.FiveThousand:
-                        if (line.Quantity >= 5)
-                            thisAmount += line.Quantity * line.Bike.Price * .8d;
-                        else
-                            thisAmount += line.Quantity * line.Bike.Price;
-                        break;
-                }
-                result.AppendLine(string.Format("\t{0} x {1} {2} = {3}", line.Quantity, line.Bike.Brand, line.Bike.Model, thisAmount.ToString("C")));
-                totalAmount += thisAmount;
-            }
-            result.AppendLine(string.Format("Sub-Total: {0}", totalAmount.ToString("C")));
+			{
+				var thisAmount = 0d;
+				switch (line.Bike.Price)
+				{
+					case Bike.OneThousand:
+						if (line.Quantity >= 20)
+							thisAmount += line.Quantity * line.Bike.Price * .9d;
+						else
+							thisAmount += line.Quantity * line.Bike.Price;
+						break;
+					case Bike.TwoThousand:
+						if (line.Quantity >= 10)
+							thisAmount += line.Quantity * line.Bike.Price * .8d;
+						else
+							thisAmount += line.Quantity * line.Bike.Price;
+						break;
+					case Bike.FiveThousand:
+						if (line.Quantity >= 5)
+							thisAmount += line.Quantity * line.Bike.Price * .8d;
+						else
+							thisAmount += line.Quantity * line.Bike.Price;
+						break;
+				}
+				MyAppendLine(result, string.Format("\t{0} x {1} {2} = {3}", line.Quantity, line.Bike.Brand, line.Bike.Model, thisAmount.ToString("C")));
+				totalAmount += thisAmount;
+			}
+			MyAppendLine(result, string.Format("Sub-Total: {0}", totalAmount.ToString("C")));
             var tax = totalAmount * TaxRate;
-            result.AppendLine(string.Format("Tax: {0}", tax.ToString("C")));
+            MyAppendLine(result, string.Format("Tax: {0}", tax.ToString("C")));
             result.Append(string.Format("Total: {0}", (totalAmount + tax).ToString("C")));
             return result.ToString();
         }
 
-        public string HtmlReceipt()
+		private static void MyAppendLine(StringBuilder result, string line)
+		{
+			result.Append(line).Append("\r\n");
+		}
+
+		public string HtmlReceipt()
         {
             var totalAmount = 0d;
             var result = new StringBuilder(string.Format("<html><body><h1>Order Receipt for {0}</h1>", Company));
