@@ -6,13 +6,13 @@ namespace BikeDistributor
     {
         public class ReceiptViewBuilder
         {
-            public string company;
+            public string      company;
             public IList<Line> lines;
-            public string headerTemplate;
-            public string lineTemplate;
-            public string subtotalTemplate;
-            public string taxTemplate;
-            public string totalTemplate;
+            public string      headerTemplate;
+            public string      lineTemplate;
+            public string      subtotalTemplate;
+            public string      taxTemplate;
+            public string      totalTemplate;
 
             public ReceiptViewBuilder WithCompany(string company)
             {

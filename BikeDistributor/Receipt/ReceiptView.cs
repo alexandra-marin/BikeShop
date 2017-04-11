@@ -5,19 +5,19 @@ namespace BikeDistributor
 {
 	public sealed partial class ReceiptView
 	{
-		private const double TaxRate = .0725d;
+        private const double TaxRate = .0725d;
 
-		StringBuilder result = new StringBuilder();
-		readonly string company;
-		readonly IList<Line> lines;
-		readonly string headerTemplate;
-		readonly string lineTemplate;
-		readonly string subtotalTemplate;
-		readonly string taxTemplate;
-		readonly string totalTemplate;
+        private double totalAmount = 0d;
+        private double tax;
 
-		double totalAmount = 0d;
-		double tax;
+		private StringBuilder result = new StringBuilder();
+		private readonly string company;
+		private readonly IList<Line> lines;
+		private readonly string headerTemplate;
+		private readonly string lineTemplate;
+		private readonly string subtotalTemplate;
+		private readonly string taxTemplate;
+		private readonly string totalTemplate;
 
 		private ReceiptView(ReceiptViewBuilder builder)
 		{

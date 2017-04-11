@@ -4,29 +4,28 @@ namespace BikeDistributor
 {
     public class Order
     {
-        public string Company { get; private set; }
-       
-        private readonly IList<Line> _lines = new List<Line>();
-        private readonly ReceiptFormats receiptBuilder = new ReceiptFormats();
+		private readonly string         company;
+		private readonly IList<Line>    lines   = new List<Line>();
+		private readonly ReceiptFormats receipt = new ReceiptFormats();
 
         public Order(string company)
         {
-            Company = company;
+            this.company = company;
         }
 
         public void AddLine(Line line)
         {
-            _lines.Add(line);
+            lines.Add(line);
         }
 
         public string Receipt()
         {
-            return receiptBuilder.PlainTextReceipt(Company, _lines);
+            return receipt.PlainText(company, lines);
         }
 
         public string HtmlReceipt()
         {
-            return receiptBuilder.HtmlReceipt(Company, _lines);
+            return receipt.Html(company, lines);
         }
     }
 }

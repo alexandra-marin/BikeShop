@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace BikeDistributor
+﻿namespace BikeDistributor
 {
     public class DiscountCondition
     {
