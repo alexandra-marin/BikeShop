@@ -7,8 +7,9 @@ namespace BikeDistributor
 {
     public class Order
     {
+		public const string NewLine = "\r\n";
         private const double TaxRate = .0725d;
-        private readonly IList<Line> _lines = new List<Line>();
+		private readonly IList<Line> _lines = new List<Line>();
 
         public Order(string company)
         {
@@ -25,7 +26,7 @@ namespace BikeDistributor
         public string Receipt()
         {
             var totalAmount = 0d;
-            var result = new StringBuilder(string.Format("Order Receipt for {0}{1}", Company, "\r\n"));
+			var result = new StringBuilder(string.Format("Order Receipt for {0}{1}", Company, NewLine));
             foreach (var line in _lines)
 			{
 				var thisAmount = 0d;
@@ -62,7 +63,7 @@ namespace BikeDistributor
 
 		private static void MyAppendLine(StringBuilder result, string line)
 		{
-			result.Append(line).Append("\r\n");
+			result.Append(line).Append(NewLine);
 		}
 
 		public string HtmlReceipt()
