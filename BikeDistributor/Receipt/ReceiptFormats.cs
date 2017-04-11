@@ -4,13 +4,13 @@ using System.Linq;
 
 namespace BikeDistributor
 {
-    public class ReceiptBuilder
+    public class ReceiptFormats
     {
         private const double TaxRate = .0725d;
 
-        public string Receipt(string Company, IList<Line> lines)
+        public string PlainTextReceipt(string Company, IList<Line> lines)
         {
-            ReceiptView view = new ReceiptView.Builder()
+            ReceiptView view = new ReceiptView.ReceiptViewBuilder()
                                 .WithCompany(Company)
                                 .WithHeader("Order Receipt for {0}" + Environment.NewLine)
                                 .WithLines(lines)
@@ -34,7 +34,7 @@ namespace BikeDistributor
                 subTotal = "</ul>" + subTotal;
             }
 
-            ReceiptView view = new ReceiptView.Builder()
+            ReceiptView view = new ReceiptView.ReceiptViewBuilder()
                                 .WithCompany(Company)
                                 .WithHeader(header)
                                 .WithLines(lines)

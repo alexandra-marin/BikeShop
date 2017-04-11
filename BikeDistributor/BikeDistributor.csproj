@@ -43,9 +43,12 @@
     <Compile Include="Bike.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Line.cs" />
-    <Compile Include="ReceiptBuilder.cs" />
-    <Compile Include="ReceiptView.cs" />
-    <Compile Include="Builder.cs" />
+    <Compile Include="Receipt\ReceiptViewBuilder.cs" />
+    <Compile Include="Receipt\ReceiptFormats.cs" />
+    <Compile Include="Receipt\ReceiptView.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Receipt\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

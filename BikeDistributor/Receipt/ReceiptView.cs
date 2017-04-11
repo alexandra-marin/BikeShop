@@ -19,7 +19,7 @@ namespace BikeDistributor
         double totalAmount = 0d;
         double tax;
 
-        private ReceiptView(Builder builder)
+        private ReceiptView(ReceiptViewBuilder builder)
         {
             this.totalTemplate = builder.totalTemplate;
             this.taxTemplate = builder.taxTemplate;

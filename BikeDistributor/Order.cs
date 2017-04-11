@@ -7,7 +7,7 @@ namespace BikeDistributor
         public string Company { get; private set; }
        
         private readonly IList<Line> _lines = new List<Line>();
-        private readonly ReceiptBuilder receiptBuilder = new ReceiptBuilder();
+        private readonly ReceiptFormats receiptBuilder = new ReceiptFormats();
 
         public Order(string company)
         {
@@ -21,7 +21,7 @@ namespace BikeDistributor
 
         public string Receipt()
         {
-            return receiptBuilder.Receipt(Company, _lines);
+            return receiptBuilder.PlainTextReceipt(Company, _lines);
         }
 
         public string HtmlReceipt()
