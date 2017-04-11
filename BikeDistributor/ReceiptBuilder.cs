@@ -8,22 +8,16 @@ namespace BikeDistributor
     public class ReceiptBuilder
     {
         private const double TaxRate = .0725d;
-       
+
         public string Receipt(string Company, IList<Line> _lines)
         {
-            var totalAmount = 0d;
-            var result = new StringBuilder(string.Format("Order Receipt for {0}{1}", Company, Environment.NewLine));
-            foreach (var line in _lines)
-            {
-                double thisAmount = CalculateAmount(line);
-                result.AppendLine(string.Format("\t{0} x {1} {2} = {3}", line.Quantity, line.Bike.Brand, line.Bike.Model, thisAmount.ToString("C")));
-                totalAmount += thisAmount;
-            }
-            result.AppendLine(string.Format("Sub-Total: {0}", totalAmount.ToString("C")));
-            var tax = totalAmount * TaxRate;
-            result.AppendLine(string.Format("Tax: {0}", tax.ToString("C")));
-            result.Append(string.Format("Total: {0}", (totalAmount + tax).ToString("C")));
-            return result.ToString();
+            ReceiptView view = new ReceiptView(Company, _lines, "Order Receipt for {0}" + Environment.NewLine,
+                                              "\t{0} x {1} {2} = {3}" + Environment.NewLine, 
+                                               "Sub-Total: {0}" + Environment.NewLine, 
+                                               "Tax: {0}" + Environment.NewLine, 
+                                               "Total: {0}");
+
+            return view.ToString();
         }
 
         public string HtmlReceipt(string Company, IList<Line> _lines)
