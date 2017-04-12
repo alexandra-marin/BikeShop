@@ -40,23 +40,21 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Receipt\ReceiptViewOptions.cs" />
-    <Compile Include="Receipt\ReceiptFormats.cs" />
-    <Compile Include="Receipt\ReceiptView.cs" />
-    <Compile Include="Discount\DiscountCondition.cs" />
-    <Compile Include="Discount\Discounts.cs" />
-    <Compile Include="Calculators\TaxCalculator.cs" />
-    <Compile Include="Calculators\LineAmount.cs" />
     <Compile Include="Order\Line.cs" />
     <Compile Include="Order\Order.cs" />
-    <Compile Include="Bike.cs" />
-    <Compile Include="Formatting.cs" />
+    <Compile Include="Order\Receipt\Calculators\Discount\DiscountCondition.cs" />
+    <Compile Include="Order\Receipt\Calculators\Discount\Discounts.cs" />
+    <Compile Include="Order\Receipt\Calculators\LineAmount.cs" />
+    <Compile Include="Order\Receipt\Calculators\TaxCalculator.cs" />
+    <Compile Include="Order\Receipt\Receipt.cs" />
+    <Compile Include="Order\Receipt\View\Formatting.cs" />
+    <Compile Include="Order\Receipt\View\ReceiptView.cs" />
+    <Compile Include="Order\Receipt\View\ReceiptViewOptions.cs" />
+    <Compile Include="Order\Bike.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Receipt\" />
-    <Folder Include="Discount\" />
-    <Folder Include="Calculators\" />
     <Folder Include="Order\" />
+    <Folder Include="Order\Receipt\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

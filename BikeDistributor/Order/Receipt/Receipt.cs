@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace BikeDistributor
 {
-	public class ReceiptFormats
+	public class Receipt
 	{
 		public string PlainText(string company, IList<Line> lines)
 		{

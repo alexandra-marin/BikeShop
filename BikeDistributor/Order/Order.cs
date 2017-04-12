@@ -6,7 +6,7 @@ namespace BikeDistributor
     {
 		private readonly string         company;
 		private readonly IList<Line>    lines   = new List<Line>();
-		private readonly ReceiptFormats receipt = new ReceiptFormats();
+		private readonly Receipt receipt = new Receipt();
 
         public Order(string company)
         {
