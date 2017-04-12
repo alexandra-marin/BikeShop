@@ -25,7 +25,7 @@ namespace BikeDistributor
 
 		public void AddLine(Line line)
 		{
-			result.Append(string.Format(options.LineTemplate, line.Quantity, line.Bike.Brand, line.Bike.Model, line.Amount.ToString("C")));
+			result.Append(string.Format(options.LineTemplate, line.Quantity, line.Bike.Brand, line.Bike.Model, line.Amount.Display()));
 		}
     
         private void AddFooter()

@@ -17,8 +17,8 @@ namespace BikeDistributor
             total     = beforeTax + tax;
         }
 
-        public string Subtotal => beforeTax.ToString("C");
-        public string Tax      => tax      .ToString("C");
-        public string Total    => total    .ToString("C");
+        public string Subtotal => beforeTax.Display();
+        public string Tax      => tax      .Display();
+        public string Total    => total    .Display();
     }
 }

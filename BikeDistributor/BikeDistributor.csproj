@@ -50,6 +50,7 @@
     <Compile Include="Order\Line.cs" />
     <Compile Include="Order\Order.cs" />
     <Compile Include="Bike.cs" />
+    <Compile Include="Formatting.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Receipt\" />
