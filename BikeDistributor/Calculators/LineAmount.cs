@@ -12,7 +12,7 @@
         public double Calculate()
         {
             var amount = 0d;
-            var discount = DiscountList.DiscountFor[line.Bike.Price];
+            var discount = Discount.For[line.Bike.Price];
 
             if (line.Quantity >= discount.MinEligibleQuantity)
                 amount += line.Quantity * line.Bike.Price * discount.DiscountedBy;
