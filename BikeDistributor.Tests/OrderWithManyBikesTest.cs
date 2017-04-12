@@ -6,9 +6,9 @@ namespace BikeDistributor.Test
     [TestFixture]
     public class OrderWithManyBikesTest
     {
-        private readonly static Bike Defy = new Bike("Giant", "Defy 1", Bike.OneThousand);
-        private readonly static Bike Elite = new Bike("Specialized", "Venge Elite", Bike.TwoThousand);
-        private readonly static Bike DuraAce = new Bike("Specialized", "S-Works Venge Dura-Ace", Bike.FiveThousand);
+        private readonly static Bike Defy = new Bike("Giant", "Defy 1", Prices.OneThousand);
+        private readonly static Bike Elite = new Bike("Specialized", "Venge Elite", Prices.TwoThousand);
+        private readonly static Bike DuraAce = new Bike("Specialized", "S-Works Venge Dura-Ace", Prices.FiveThousand);
 
         [Test]
         public void ReceiptManyDefy()
