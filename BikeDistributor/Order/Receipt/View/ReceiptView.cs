@@ -14,17 +14,15 @@ namespace BikeDistributor
         private string        totalTemplate;
 	    private StringBuilder view = new StringBuilder();
 
-        private ReceiptView()
-        {
-        }
+        private ReceiptView() {}
 
-        public string Print()
+        public string Print() => view.ToString();
+
+        private void BuildReceipt()
         {
             AddHeader();
             AddProducts();
             AddFooter();
-
-            return view.ToString();
         }
 
         private void AddHeader()

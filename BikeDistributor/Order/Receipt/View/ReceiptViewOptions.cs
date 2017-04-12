@@ -52,6 +52,7 @@ namespace BikeDistributor
 
             public ReceiptView Build()
             {
+                view.BuildReceipt();
                 return view;
             }
         }
