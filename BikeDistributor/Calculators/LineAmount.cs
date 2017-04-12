@@ -9,17 +9,14 @@
             this.line = line;
         }
 
-        public double Calculate()
-        {
-            var amount = 0d;
-            var discount = Discount.For[line.Bike.Price];
+        public double Calculate() => IsDiscounted ? DiscountedPrice : NormalPrice;
 
-            if (line.Quantity >= discount.MinEligibleQuantity)
-                amount += line.Quantity * line.Bike.Price * discount.DiscountedBy;
-            else
-                amount += line.Quantity * line.Bike.Price;
-            
-            return amount;
-        }
+        private DiscountCondition Condition => Discount.For[line.Bike.Price];
+
+        private bool IsDiscounted => line.Quantity >= Condition.MinEligibleQuantity;
+
+        private double DiscountedPrice => NormalPrice * Condition.DiscountedBy;
+
+        private double NormalPrice => line.Quantity * line.Bike.Price;
     }
 }
