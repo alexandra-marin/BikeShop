@@ -6,59 +6,54 @@ namespace BikeDistributor
     {
         public class Options
         {
-            public string      Company;
-            public IList<Line> Lines;
-            public string      HeaderTemplate;
-            public string      LineTemplate;
-            public string      SubtotalTemplate;
-            public string      TaxTemplate;
-            public string      TotalTemplate;
+            private readonly ReceiptView view = new ReceiptView();
 
             public Options WithCompany(string company)
             {
-                this.Company = company;
+                view.company = company;
                 return this;
             }
 
             public Options WithLines(IList<Line> lines)
             {
-                this.Lines = lines;
+                view.lines = lines;
                 return this;
             }
 
             public Options WithHeader(string headerTemplate)
             {
-                this.HeaderTemplate = headerTemplate;
+                view.headerTemplate = headerTemplate;
                 return this;
             }
 
             public Options WithLine(string lineTemplate)
             {
-                this.LineTemplate = lineTemplate;
+                view.lineTemplate = lineTemplate;
                 return this;
             }
 
             public Options WithSubtotal(string subtotalTemplate)
             {
-                this.SubtotalTemplate = subtotalTemplate;
+                view.subtotalTemplate = subtotalTemplate;
                 return this;
             }
 
             public Options WithTax(string taxTemplate)
             {
-                this.TaxTemplate = taxTemplate;
+                view.taxTemplate = taxTemplate;
                 return this;
             }
 
             public Options WithTotal(string totalTemplate)
             {
-                this.TotalTemplate = totalTemplate;
+                view.totalTemplate = totalTemplate;
                 return this;
             }
 
             public ReceiptView Build()
             {
-                return new ReceiptView(this);
+                view.PrintResult();
+                return view;
             }
         }
     }
