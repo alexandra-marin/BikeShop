@@ -13,36 +13,44 @@ namespace BikeDistributor
         private string        subtotalTemplate;
         private string        taxTemplate;
         private string        totalTemplate;
-        private StringBuilder result = new StringBuilder();
+        private StringBuilder receipt = new StringBuilder();
 
         private ReceiptView()
         {
         }
 
-        public void PrintResult()
+        public string Print()
         {
-            result.Append(string.Format(headerTemplate, company));
-            lines.ToList().ForEach(AddLine);
+            AddHeader();
+            AddProducts();
             AddFooter();
+
+            return receipt.ToString();
         }
 
-		public void AddLine(Line line)
+        private void AddHeader()
+        {
+            receipt.Append(string.Format(headerTemplate, company));
+        }
+
+        private void AddProducts()
+        {
+            lines.ToList()
+                 .ForEach(AddLine);
+        }
+
+        private void AddLine(Line line)
 		{
-			result.Append(string.Format(lineTemplate, line.Quantity, line.Bike.Brand, line.Bike.Model, line.Amount.Display()));
+			receipt.Append(string.Format(lineTemplate, line.Quantity, line.Bike.Brand, line.Bike.Model, line.Amount.Display()));
 		}
     
         private void AddFooter()
         {
             var calculator = new TaxCalculator(lines);
 
-            result.Append(string.Format(subtotalTemplate, calculator.Subtotal));
-            result.Append(string.Format(taxTemplate     , calculator.Tax     ));
-            result.Append(string.Format(totalTemplate   , calculator.Total   ));
+            receipt.Append(string.Format(subtotalTemplate, calculator.Subtotal));
+            receipt.Append(string.Format(taxTemplate     , calculator.Tax     ));
+            receipt.Append(string.Format(totalTemplate   , calculator.Total   ));
         }
-
-		public override string ToString()
-		{
-			return result.ToString();
-		}
 	}
 }

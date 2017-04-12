@@ -18,7 +18,7 @@ namespace BikeDistributor
                                               .WithTotal("Total: {0}")
                                               .Build();
 
-			return view.ToString();
+			return view.Print();
 		}
 
 		public string Html(string company, IList<Line> lines)
@@ -42,7 +42,7 @@ namespace BikeDistributor
                                               .WithTotal("<h2>Total: {0}</h2></body></html>")
                                               .Build();
 
-			return view.ToString();
+			return view.Print();
 		}
 	}
 }
