@@ -5,20 +5,18 @@ namespace BikeDistributor
 {
     public class TaxCalculator
     {
-        private const    double taxRate = .0725d;
-        private readonly double beforeTax;
-        private readonly double tax;
-        private readonly double total;
-        
-        public TaxCalculator(IList<Line> receiptRows)
+        private const    double      taxRate = .0725d;
+        private readonly IList<Line> products;
+
+        public TaxCalculator(IList<Line> products)
         {
-            beforeTax = receiptRows.Sum(line => line.Amount);
-            tax       = beforeTax * taxRate;
-            total     = beforeTax + tax;
+            this.products = products;
         }
 
-        public string Subtotal => beforeTax.Display();
-        public string Tax      => tax      .Display();
-        public string Total    => total    .Display();
+        public double Subtotal => products.Sum(line => line.Amount);
+
+        public double Tax => Subtotal * taxRate;
+
+        public double Total => Subtotal + Tax;
     }
 }

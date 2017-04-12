@@ -44,9 +44,9 @@ namespace BikeDistributor
         {
             var calculator = new TaxCalculator(lines);
 
-            receipt.Append(string.Format(subtotalTemplate, calculator.Subtotal));
-            receipt.Append(string.Format(taxTemplate     , calculator.Tax     ));
-            receipt.Append(string.Format(totalTemplate   , calculator.Total   ));
+            receipt.Append(string.Format(subtotalTemplate, calculator.Subtotal.Display()));
+            receipt.Append(string.Format(taxTemplate     , calculator.Tax     .Display()));
+            receipt.Append(string.Format(totalTemplate   , calculator.Total   .Display()));
         }
 	}
 }
