@@ -1,5 +1,4 @@
 ﻿using System.Text;
-using System.Linq;
 using System.Collections.Generic;
 
 namespace BikeDistributor
@@ -35,14 +34,11 @@ namespace BikeDistributor
 
         private void AddProducts()
         {
-            lines.ToList()
-                 .ForEach(AddLine);
+            foreach (var line in lines)
+            {
+                receipt.Append(string.Format(lineTemplate, line.Quantity, line.Bike.Brand, line.Bike.Model, line.Amount.Display()));
+            }
         }
-
-        private void AddLine(Line line)
-		{
-			receipt.Append(string.Format(lineTemplate, line.Quantity, line.Bike.Brand, line.Bike.Model, line.Amount.Display()));
-		}
     
         private void AddFooter()
         {
