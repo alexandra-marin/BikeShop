@@ -16,15 +16,12 @@ namespace BikeDistributor
  
         public void PrintResult()
         {
-            AddHeader();
-            options.Lines.ToList().ForEach(x => AddLine(x));
+            result.Append(string.Format(options.HeaderTemplate, options.Company));
+            options.Lines
+                   .ToList()
+                   .ForEach(AddLine);
             AddFooter();
         }
-
-        public void AddHeader()
-		{
-			result.Append(string.Format(options.HeaderTemplate, options.Company));
-		}
 
 		public void AddLine(Line line)
 		{
