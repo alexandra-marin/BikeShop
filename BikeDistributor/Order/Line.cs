@@ -8,10 +8,10 @@
 
         public Line(Bike bike, int quantity)
         {
+            var calculator = new LineAmount(this);
+
             Bike = bike;
             Quantity = quantity;
-
-            var calculator = new LineAmount(this);
             Amount = calculator.Calculate();
         }
     }
