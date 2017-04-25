@@ -2,21 +2,25 @@
 {
     public class LineAmount
     {
-        private readonly Line line;
+        private readonly int price;
+        private readonly int quantity;
+        private readonly DiscountedPrice discountedPrice;
 
-        public LineAmount(Line line)
+        public LineAmount(int price, int quantity, DiscountedPrice discountedPrice)
         {
-            this.line = line;
+            this.price = price;
+            this.quantity = quantity;
+            this.discountedPrice = discountedPrice;
         }
 
         public double Calculate() => IsDiscounted ? DiscountedPrice : NormalPrice;
 
-        private DiscountCondition Condition => BikeDistributor.DiscountedPrice.For[line.Bike.Price];
+        private DiscountCondition Condition => discountedPrice.For[price];
 
-        private bool IsDiscounted => line.Quantity >= Condition.MinEligibleQuantity;
+        private bool IsDiscounted => quantity >= Condition.MinEligibleQuantity;
 
         private double DiscountedPrice => NormalPrice * Condition.DiscountedFraction;
 
-        private double NormalPrice => line.Quantity * line.Bike.Price;
+        private double NormalPrice => quantity * price;
     }
 }

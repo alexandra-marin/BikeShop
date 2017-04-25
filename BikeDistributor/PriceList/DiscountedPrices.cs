@@ -2,11 +2,11 @@
 
 namespace BikeDistributor
 {
-    public static class DiscountedPrice
+    public class DiscountedPrice
     {
-        public static Dictionary<int, DiscountCondition> For = new Dictionary<int, DiscountCondition>();
+        public Dictionary<int, DiscountCondition> For = new Dictionary<int, DiscountCondition>();
      
-        static DiscountedPrice()
+        public DiscountedPrice()
         {
             List<DiscountCondition> discounts = new DiscountConfiguration().GetDiscounts();
 

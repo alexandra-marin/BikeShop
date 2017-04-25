@@ -40,6 +40,9 @@
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\packages\Newtonsoft.Json.10.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="Ninject">
+      <HintPath>..\packages\Ninject.3.2.2.0\lib\net45-full\Ninject.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -55,6 +58,8 @@
     <Compile Include="Line.cs" />
     <Compile Include="Order.cs" />
     <Compile Include="PriceList\DiscountConfiguration.cs" />
+    <Compile Include="Startup.cs" />
+    <Compile Include="Bindings.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="PriceList\" />
