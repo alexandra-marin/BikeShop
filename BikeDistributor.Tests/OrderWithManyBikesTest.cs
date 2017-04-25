@@ -1,7 +1,7 @@
 ﻿using NUnit.Framework;
 using System;
 
-namespace BikeDistributor.Test
+namespace BikeDistributor
 {
     [TestFixture]
     public class OrderWithManyBikesTest
