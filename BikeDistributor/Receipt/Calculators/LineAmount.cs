@@ -11,11 +11,11 @@
 
         public double Calculate() => IsDiscounted ? DiscountedPrice : NormalPrice;
 
-        private DiscountCondition Condition => Discount.For[line.Bike.Price];
+        private DiscountCondition Condition => BikeDistributor.DiscountedPrice.For[line.Bike.Price];
 
         private bool IsDiscounted => line.Quantity >= Condition.MinEligibleQuantity;
 
-        private double DiscountedPrice => NormalPrice * Condition.DiscountedBy;
+        private double DiscountedPrice => NormalPrice * Condition.DiscountedFraction;
 
         private double NormalPrice => line.Quantity * line.Bike.Price;
     }
