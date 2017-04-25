@@ -6,9 +6,9 @@ namespace BikeDistributor
     {
         public Dictionary<int, DiscountCondition> For = new Dictionary<int, DiscountCondition>();
      
-        public DiscountedPrice()
+        public DiscountedPrice(DiscountConfiguration discountsConfig)
         {
-            List<DiscountCondition> discounts = new DiscountConfiguration().GetDiscounts();
+            List<DiscountCondition> discounts = discountsConfig.GetDiscounts();
 
             foreach (var discount in discounts)
             {

@@ -34,6 +34,7 @@
     <Compile Include="OrderWithOneBikeTest.cs" />
     <Compile Include="OrderWithManyBikesTest.cs" />
     <Compile Include="OrderWithManyLinesTest.cs" />
+    <Compile Include="BikeTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

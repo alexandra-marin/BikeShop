@@ -4,12 +4,8 @@ using NUnit.Framework;
 namespace BikeDistributor
 {
 	[TestFixture]
-	public class OrderWithManyLinesTest
+	public class OrderWithManyLinesTest : BikeTests
 	{
-        private readonly static Bike Defy = new Bike("Giant", "Defy 1", 1000);
-		private readonly static Bike Elite = new Bike("Specialized", "Venge Elite", 2000);
-        private readonly static DiscountedPrice discountedPrice = new DiscountedPrice();
-
         [Test]
 		public void ReceiptManyLines()
 		{
