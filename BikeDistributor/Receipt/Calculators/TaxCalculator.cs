@@ -5,15 +5,15 @@ namespace BikeDistributor
 {
     public class TaxCalculator
     {
-        private const    double      taxRate = .0725d;
-        private readonly IList<Line> products;
+        private const    double              taxRate = .0725d;
+        private readonly IEnumerable<double> amounts;
 
-        public TaxCalculator(IList<Line> products)
+        public TaxCalculator(IEnumerable<double> amounts)
         {
-            this.products = products;
+            this.amounts = amounts;
         }
 
-        public double Subtotal => products.Sum(line => line.Amount);
+        public double Subtotal => amounts.Sum();
 
         public double Tax => Subtotal * taxRate;
 

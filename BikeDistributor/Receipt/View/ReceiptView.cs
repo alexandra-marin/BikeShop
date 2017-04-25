@@ -1,5 +1,6 @@
 ﻿using System.Text;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace BikeDistributor
 {
@@ -51,7 +52,7 @@ namespace BikeDistributor
 
         private void AddFooter()
         {
-            var calculator = new TaxCalculator(lines);
+            var calculator = new TaxCalculator(lines.Select(x => x.Amount));
 
             view.Append(string.Format(subtotalTemplate, calculator.Subtotal.Display()));
             view.Append(string.Format(taxTemplate     , calculator.Tax     .Display()));
