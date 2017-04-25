@@ -14,7 +14,18 @@ namespace BikeDistributor
         private string        totalTemplate;
 	    private StringBuilder view = new StringBuilder();
 
-        private ReceiptView() {}
+        private ReceiptView(Options options)
+        {
+            company = options.company;
+            lines = options.lines;
+            headerTemplate = options.headerTemplate;
+            lineTemplate = options.lineTemplate;
+            subtotalTemplate = options.subtotalTemplate;
+            taxTemplate = options.taxTemplate;
+            totalTemplate = options.totalTemplate;
+
+            BuildReceipt();
+        }
 
         public string Print() => view.ToString();
 
@@ -37,7 +48,7 @@ namespace BikeDistributor
                 view.Append(string.Format(lineTemplate, line.Quantity, line.Bike.Brand, line.Bike.Model, line.Amount.Display()));
             }
         }
-    
+
         private void AddFooter()
         {
             var calculator = new TaxCalculator(lines);
