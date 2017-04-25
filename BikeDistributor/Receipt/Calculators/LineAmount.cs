@@ -1,12 +1,12 @@
-﻿namespace BikeDistributor
+﻿﻿namespace BikeDistributor
 {
     public class LineAmount
     {
         private readonly int price;
         private readonly int quantity;
-        private readonly DiscountedPrice discountedPrice;
+        private readonly Discounts discountedPrice;
 
-        public LineAmount(int price, int quantity, DiscountedPrice discountedPrice)
+        public LineAmount(int price, int quantity, Discounts discountedPrice)
         {
             this.price = price;
             this.quantity = quantity;

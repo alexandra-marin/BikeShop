@@ -5,19 +5,22 @@ using Newtonsoft.Json;
 
 namespace BikeDistributor
 {
-    public class DiscountConfiguration
+    public class BikeDistributorConfiguration
     {
-        private const string discountFile = "Discounts.json";
-       
-        public List<DiscountCondition> GetDiscounts()
+        private const string discountFile = "BikeDistributor.json";
+
+        public List<DiscountCondition> Discounts { get; set; }
+        public double TaxRate { get; set; }
+
+        public static BikeDistributorConfiguration Build()
         {
             string executableLocation = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
             string fileLocation = Path.Combine(executableLocation, discountFile);
 
             var discountsJson = File.ReadAllText(fileLocation);
 
-            var discounts = JsonConvert.DeserializeObject<List<DiscountCondition>>(discountsJson);
-            return discounts;
+            return JsonConvert.DeserializeObject<BikeDistributorConfiguration>(discountsJson);
         }
     }
+
 }

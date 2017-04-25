@@ -1,4 +1,4 @@
-﻿namespace BikeDistributor
+﻿﻿namespace BikeDistributor
 {
     public class Line
     {
@@ -6,7 +6,7 @@
         public int    Quantity { get; private set; }
         public double Amount   { get; private set; }
 
-        public Line(Bike bike, int quantity, DiscountedPrice discountedPrice)
+        public Line(Bike bike, int quantity, Discounts discountedPrice)
         {
             Bike = bike;
             Quantity = quantity;
