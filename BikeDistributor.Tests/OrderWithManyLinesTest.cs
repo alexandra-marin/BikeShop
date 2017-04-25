@@ -6,8 +6,8 @@ namespace BikeDistributor.Tests
 	[TestFixture]
 	public class OrderWithManyLinesTest
 	{
-        private readonly static Bike Defy = new Bike("Giant", "Defy 1", Prices.OneThousand);
-		private readonly static Bike Elite = new Bike("Specialized", "Venge Elite", Prices.TwoThousand);
+        private readonly static Bike Defy = new Bike("Giant", "Defy 1", 1000);
+		private readonly static Bike Elite = new Bike("Specialized", "Venge Elite", 2000);
 
 		[Test]
 		public void ReceiptManyLines()

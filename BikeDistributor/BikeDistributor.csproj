@@ -41,7 +41,6 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PriceList\Discounts.cs" />
-    <Compile Include="PriceList\Prices.cs" />
     <Compile Include="Receipt\Calculators\DiscountCondition.cs" />
     <Compile Include="Receipt\Calculators\LineAmount.cs" />
     <Compile Include="Receipt\Calculators\TaxCalculator.cs" />
