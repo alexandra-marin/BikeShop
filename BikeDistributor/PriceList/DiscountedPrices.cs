@@ -2,13 +2,13 @@
 
 namespace BikeDistributor
 {
-    public class Discounts
+    public class DiscountedPrice
     {
         public Dictionary<int, DiscountCondition> For = new Dictionary<int, DiscountCondition>();
      
-        public Discounts(BikeDistributorConfiguration discountsConfig)
+        public DiscountedPrice(DiscountConfiguration discountsConfig)
         {
-            List<DiscountCondition> discounts = discountsConfig.Discounts;
+            List<DiscountCondition> discounts = discountsConfig.GetDiscounts();
 
             foreach (var discount in discounts)
             {
