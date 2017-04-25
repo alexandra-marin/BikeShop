@@ -6,10 +6,6 @@
         public int    Quantity { get; private set; }
         public double Amount   { get; private set; }
 
-        public Line(Bike bike, int quantity) : this(bike, quantity, new DiscountedPrice())
-        {
-        }
-
         public Line(Bike bike, int quantity, DiscountedPrice discountedPrice)
         {
             Bike = bike;

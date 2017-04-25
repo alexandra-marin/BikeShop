@@ -9,12 +9,13 @@ namespace BikeDistributor
         private readonly static Bike Defy = new Bike("Giant", "Defy 1", 1000);
         private readonly static Bike Elite = new Bike("Specialized", "Venge Elite", 2000);
         private readonly static Bike DuraAce = new Bike("Specialized", "S-Works Venge Dura-Ace", 5000);
+        private readonly static DiscountedPrice discountedPrice = new DiscountedPrice();
 
         [Test]
         public void ReceiptManyDefy()
         {
             var order = new Order("Anywhere Bike Shop");
-            order.AddLine(new Line(Defy, 21));
+            order.AddLine(new Line(Defy, 21, discountedPrice));
             Assert.AreEqual(ResultStatementManyDefy, order.Receipt());
         }
 
@@ -28,7 +29,7 @@ namespace BikeDistributor
         public void ReceiptManyElite()
         {
             var order = new Order("Anywhere Bike Shop");
-            order.AddLine(new Line(Elite, 21));
+            order.AddLine(new Line(Elite, 21, discountedPrice));
             Assert.AreEqual(ResultStatementManyElite, order.Receipt());
         }
 
@@ -42,7 +43,7 @@ namespace BikeDistributor
         public void ReceiptManyDuraAce()
         {
             var order = new Order("Anywhere Bike Shop");
-            order.AddLine(new Line(DuraAce, 21));
+            order.AddLine(new Line(DuraAce, 21, discountedPrice));
             Assert.AreEqual(ResultStatementManyDuraAce, order.Receipt());
         }
 
@@ -56,7 +57,7 @@ namespace BikeDistributor
         public void HtmlReceiptManyDefy()
         {
             var order = new Order("Anywhere Bike Shop");
-            order.AddLine(new Line(Defy, 21));
+            order.AddLine(new Line(Defy, 21, discountedPrice));
             Assert.AreEqual(HtmlResultStatementManyDefy, order.HtmlReceipt());
         }
 
@@ -66,7 +67,7 @@ namespace BikeDistributor
         public void HtmlReceiptManyElite()
         {
             var order = new Order("Anywhere Bike Shop");
-            order.AddLine(new Line(Elite, 21));
+            order.AddLine(new Line(Elite, 21, discountedPrice));
             Assert.AreEqual(HtmlResultStatementManyElite, order.HtmlReceipt());
         }
 
@@ -76,7 +77,7 @@ namespace BikeDistributor
         public void HtmlReceiptManyDuraAce()
         {
             var order = new Order("Anywhere Bike Shop");
-            order.AddLine(new Line(DuraAce, 21));
+            order.AddLine(new Line(DuraAce, 21, discountedPrice));
             Assert.AreEqual(HtmlResultStatementManyDuraAce, order.HtmlReceipt());
         }
 
