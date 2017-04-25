@@ -4,8 +4,6 @@ namespace BikeDistributor
 {
     public sealed partial class ReceiptView
     {
-        private Options options;
-
         public class Options
         {
             public string      company;

@@ -1,21 +1,21 @@
-﻿namespace BikeDistributor
+﻿﻿namespace BikeDistributor
 {
     public class LineAmount
     {
         private readonly int price;
         private readonly int quantity;
-        private readonly DiscountedPrice discountedPrice;
+        private readonly Discounts discount;
 
-        public LineAmount(int price, int quantity, DiscountedPrice discountedPrice)
+        public LineAmount(int price, int quantity, Discounts discount)
         {
             this.price = price;
             this.quantity = quantity;
-            this.discountedPrice = discountedPrice;
+            this.discount = discount;
         }
 
         public double Calculate() => IsDiscounted ? DiscountedPrice : NormalPrice;
 
-        private DiscountCondition Condition => discountedPrice.For[price];
+        private DiscountCondition Condition => discount.For[price];
 
         private bool IsDiscounted => quantity >= Condition.MinEligibleQuantity;
 

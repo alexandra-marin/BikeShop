@@ -4,9 +4,9 @@ namespace BikeDistributor
 {
     public class Order
     {
-		private readonly string         company;
-		private readonly IList<Line>    lines   = new List<Line>();
-		private readonly Receipt receipt = new Receipt();
+		private readonly string      company;
+		private readonly IList<Line> lines   = new List<Line>();
+		private readonly Receipt     receipt = new Receipt();
 
         public Order(string company)
         {
