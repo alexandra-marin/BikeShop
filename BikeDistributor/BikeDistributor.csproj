@@ -54,6 +54,7 @@
     <Compile Include="Bike.cs" />
     <Compile Include="Line.cs" />
     <Compile Include="Order.cs" />
+    <Compile Include="PriceList\DiscountConfiguration.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="PriceList\" />

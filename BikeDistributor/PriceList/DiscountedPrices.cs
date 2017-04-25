@@ -1,7 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.IO;
-using System.Reflection;
-using Newtonsoft.Json;
 
 namespace BikeDistributor
 {
@@ -11,16 +8,11 @@ namespace BikeDistributor
      
         static DiscountedPrice()
         {
-            string executableLocation = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-            string fileLocation = Path.Combine(executableLocation, "Discounts.json");
+            List<DiscountCondition> discounts = new DiscountConfiguration().GetDiscounts();
 
-            var text = File.ReadAllText(fileLocation);
-
-            var li = JsonConvert.DeserializeObject<List<DiscountCondition>>(text);
-
-            foreach(var l in li)
+            foreach (var discount in discounts)
             {
-                For[l.Price] = l;
+                For[discount.Price] = discount;
             }
         }
     }
