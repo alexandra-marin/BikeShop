@@ -5,10 +5,10 @@ using Newtonsoft.Json;
 
 namespace BikeDistributor
 {
-    public class DiscountConfiguration
+    public class PriceCatalogueConfiguration
     {
-        private const string discountFile = "Discounts.json";
-       
+        private const string discountFile = "PriceCatalogue.json";
+
         public List<DiscountCondition> GetDiscounts()
         {
             string executableLocation = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);

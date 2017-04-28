@@ -10,7 +10,7 @@ namespace BikeDistributor
         public void ReceiptOneDefy()
         {
             var order = new Order("Anywhere Bike Shop");
-            order.AddLine(new Line(Defy, 1, discountedPrice));
+            order.AddLine(new Line(Defy, 1, priceCatalogue));
             Assert.AreEqual(ResultStatementOneDefy, order.Receipt());
         }
 
@@ -24,7 +24,7 @@ namespace BikeDistributor
         public void ReceiptOneElite()
         {
             var order = new Order("Anywhere Bike Shop");
-            order.AddLine(new Line(Elite, 1, discountedPrice));
+            order.AddLine(new Line(Elite, 1, priceCatalogue));
             Assert.AreEqual(ResultStatementOneElite, order.Receipt());
         }
 
@@ -38,7 +38,7 @@ namespace BikeDistributor
         public void ReceiptOneDuraAce()
         {
             var order = new Order("Anywhere Bike Shop");
-            order.AddLine(new Line(DuraAce, 1, discountedPrice));
+            order.AddLine(new Line(DuraAce, 1, priceCatalogue));
             Assert.AreEqual(ResultStatementOneDuraAce, order.Receipt());
         }
 
@@ -52,7 +52,7 @@ namespace BikeDistributor
         public void HtmlReceiptOneDefy()
         {
             var order = new Order("Anywhere Bike Shop");
-            order.AddLine(new Line(Defy, 1, discountedPrice));
+            order.AddLine(new Line(Defy, 1, priceCatalogue));
             Assert.AreEqual(HtmlResultStatementOneDefy, order.HtmlReceipt());
         }
 
@@ -62,7 +62,7 @@ namespace BikeDistributor
         public void HtmlReceiptOneElite()
         {
             var order = new Order("Anywhere Bike Shop");
-            order.AddLine(new Line(Elite, 1, discountedPrice));
+            order.AddLine(new Line(Elite, 1, priceCatalogue));
             Assert.AreEqual(HtmlResultStatementOneElite, order.HtmlReceipt());
         }
 
@@ -72,7 +72,7 @@ namespace BikeDistributor
         public void HtmlReceiptOneDuraAce()
         {
             var order = new Order("Anywhere Bike Shop");
-            order.AddLine(new Line(DuraAce, 1, discountedPrice));
+            order.AddLine(new Line(DuraAce, 1, priceCatalogue));
             Assert.AreEqual(HtmlResultStatementOneDuraAce, order.HtmlReceipt());
         }
 

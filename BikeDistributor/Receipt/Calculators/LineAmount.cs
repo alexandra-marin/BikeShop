@@ -1,21 +1,24 @@
-﻿﻿namespace BikeDistributor
+﻿using System.Linq;
+
+﻿namespace BikeDistributor
 {
     public class LineAmount
     {
-        private readonly int price;
-        private readonly int quantity;
-        private readonly Discounts discount;
+        private readonly int            price;
+        private readonly int            quantity;
+        private readonly PriceCatalogue priceCatalogue;
 
-        public LineAmount(int price, int quantity, Discounts discount)
+        public LineAmount(int price, int quantity, PriceCatalogue priceCatalogue)
         {
             this.price = price;
             this.quantity = quantity;
-            this.discount = discount;
+            this.priceCatalogue = priceCatalogue;
         }
 
         public double Calculate() => IsDiscounted ? DiscountedPrice : NormalPrice;
 
-        private DiscountCondition Condition => discount.For[price];
+        private DiscountCondition Condition => priceCatalogue.Discounts
+                                                             .FirstOrDefault(x => x.ItemPrice == price);
 
         private bool IsDiscounted => quantity >= Condition.MinEligibleQuantity;
 

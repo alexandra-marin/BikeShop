@@ -6,7 +6,7 @@
         public int    Quantity { get; private set; }
         public double Amount   { get; private set; }
 
-        public Line(Bike bike, int quantity, Discounts discount)
+        public Line(Bike bike, int quantity, PriceCatalogue discount)
         {
             Bike = bike;
             Quantity = quantity;
